@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JUEVES 14 DE MAYO DEL 2026</title>
+
+  <style>
+    body{
+      margin:0;
+      padding:0;
+      background: radial-gradient(circle at top, #1a0033, #07000f, #000000);
+      font-family: "Georgia", serif;
+      color: #f6efff;
+      overflow-x:hidden;
+    }
+
+    /* Fondo estrellado */
+    .stars{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background-image:
+        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 70% 40%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 25% 85%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 60% 15%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 80% 25%, rgba(255,255,255,0.5), transparent);
+      opacity:0.6;
+      z-index:-2;
+      animation: twinkle 6s infinite alternate;
+    }
+
+    @keyframes twinkle{
+      from{opacity:0.35;}
+      to{opacity:0.8;}
+    }
+
+    /* Neblina celestial */
+    .nebula{
+      position:fixed;
+      top:-20%;
+      left:-20%;
+      width:140%;
+      height:140%;
+      background: radial-gradient(circle at 30% 30%, rgba(170,0,255,0.35), transparent 55%),
+                  radial-gradient(circle at 70% 60%, rgba(0,160,255,0.22), transparent 60%),
+                  radial-gradient(circle at 40% 80%, rgba(255,0,200,0.20), transparent 60%);
+      filter: blur(35px);
+      z-index:-3;
+      opacity:0.8;
+      animation: drift 14s infinite alternate ease-in-out;
+    }
+
+    @keyframes drift{
+      from{transform: translate(0px,0px) scale(1);}
+      to{transform: translate(25px,30px) scale(1.05);}
+    }
+
+    .container{
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 30px;
+      position:relative;
+    }
+
+    /* Carta */
+    .letter{
+      background: linear-gradient(180deg, rgba(25,0,40,0.92), rgba(0,0,0,0.88));
+      border: 2px solid rgba(190, 90, 255, 0.35);
+      border-radius: 26px;
+      padding: 45px 55px;
+      box-shadow: 0 0 25px rgba(160,0,255,0.35),
+                  0 0 55px rgba(80,0,180,0.25);
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Brillo decorativo arriba */
+    .letter::before{
+      content:"";
+      position:absolute;
+      top:-80px;
+      left:-80px;
+      width:220px;
+      height:220px;
+      background: radial-gradient(circle, rgba(255,255,255,0.30), rgba(190,0,255,0.20), transparent 70%);
+      filter: blur(10px);
+      opacity:0.9;
+    }
+
+    /* Brillo decorativo abajo */
+    .letter::after{
+      content:"";
+      position:absolute;
+      bottom:-100px;
+      right:-100px;
+      width:280px;
+      height:280px;
+      background: radial-gradient(circle, rgba(140,0,255,0.35), rgba(255,0,220,0.18), transparent 72%);
+      filter: blur(12px);
+      opacity:0.9;
+    }
+
+    .date{
+      font-size: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(230,200,255,0.85);
+      text-align:center;
+      margin-bottom: 20px;
+    }
+
+    .title{
+      text-align:center;
+      font-size: 34px;
+      margin: 0;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 0 12px rgba(190,0,255,0.8),
+                   0 0 25px rgba(255,0,220,0.4);
+    }
+
+    .subtitle{
+      text-align:center;
+      margin-top: 10px;
+      font-size: 15px;
+      color: rgba(240,220,255,0.85);
+      font-style: italic;
+    }
+
+    .divider{
+      margin: 30px auto;
+      width: 75%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, rgba(190,0,255,0.8), rgba(255,0,200,0.55), transparent);
+      border-radius: 999px;
+      box-shadow: 0 0 18px rgba(190,0,255,0.55);
+    }
+
+    .content{
+      font-size: 18px;
+      line-height: 1.9;
+      color: rgba(250,245,255,0.92);
+      text-align: justify;
+      position:relative;
+      z-index:2;
+    }
+
+    .content p{
+      margin-bottom: 18px;
+    }
+
+    .content strong{
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(190,0,255,0.9);
+    }
+
+    .signature{
+      margin-top: 35px;
+      text-align:right;
+      font-size: 18px;
+      font-style: italic;
+      color: rgba(240,220,255,0.95);
+      text-shadow: 0 0 12px rgba(150,0,255,0.6);
+      position:relative;
+      z-index:2;
+    }
+
+    .signature span{
+      display:block;
+      margin-top: 6px;
+      font-size: 17px;
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.95);
+    }
+
+    /* Frase final neon */
+    .final-neon{
+      margin-top: 40px;
+      padding: 20px 18px;
+      border-radius: 18px;
+      text-align:center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #f9e6ff;
+      background: rgba(40,0,70,0.55);
+      border: 1px solid rgba(200, 100, 255, 0.35);
+      text-shadow: 
+        0 0 8px rgba(200,0,255,0.9),
+        0 0 18px rgba(160,0,255,0.9),
+        0 0 35px rgba(255,0,200,0.7),
+        0 0 55px rgba(200,0,255,0.5);
+      box-shadow:
+        0 0 18px rgba(190,0,255,0.55),
+        0 0 40px rgba(255,0,200,0.35);
+      position:relative;
+      z-index:2;
+    }
+
+    /* Pequeños destellos */
+    .sparkle{
+      position:absolute;
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 0 12px rgba(255,255,255,0.9),
+                  0 0 20px rgba(190,0,255,0.9);
+      animation: sparkleMove 4s infinite alternate ease-in-out;
+      opacity:0.8;
+      z-index:1;
+    }
+
+    @keyframes sparkleMove{
+      from{transform: translateY(0px) scale(1);}
+      to{transform: translateY(-12px) scale(1.2);}
+    }
+
+    .s1{top:25px; left:40px;}
+    .s2{top:70px; right:60px;}
+    .s3{bottom:120px; left:80px;}
+    .s4{bottom:70px; right:90px;}
+    .s5{top:160px; left:120px;}
+
+    @media(max-width:768px){
+      .letter{
+        padding: 30px 22px;
+      }
+      .title{
+        font-size: 26px;
+      }
+      .content{
+        font-size: 16px;
+      }
+      .final-neon{
+        font-size: 17px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+  <div class="nebula"></div>
+
+  <div class="container">
+    <div class="letter">
+
+      <div class="sparkle s1"></div>
+      <div class="sparkle s2"></div>
+      <div class="sparkle s3"></div>
+      <div class="sparkle s4"></div>
+      <div class="sparkle s5"></div>
+
+      <div class="date">Jueves, 14 de mayo de 2026 — Noche</div>
+      <h1 class="title">PARA EL AMOR DE MI VIDA</h1>
+      <div class="subtitle">Un amor escrito entre estrellas, fuego y destino</div>
+
+      <div class="divider"></div>
+
+      <div class="content">
+        <p>MI MUJER HERMOSA,</p>
+
+        <p>
+          Esta noche siento que el mundo se queda en silencio solo para que mi corazón pueda hablarte… 
+          porque cuando llega la noche, tú te vuelves más intensa en mi mente, más hermosa en mis pensamientos, 
+          más necesaria en mi alma. Y yo no sé cómo explicarte lo que me pasa contigo… pero es como si mi vida 
+          hubiera estado esperando tu existencia desde hace mucho tiempo.
+        </p>
+
+        <p>
+          Te pienso… y siento que algo dentro de mí se ilumina. Como si tu nombre fuera una chispa divina que 
+          enciende todo lo bueno que hay en mí. Eres esa paz que no se puede comprar, ese amor que no se puede 
+          fingir, esa magia que no se puede describir con palabras comunes… porque tú no eres común, mi amor. 
+          Tú eres un regalo del cielo… y yo todavía me sorprendo de que la vida me haya permitido tocar algo tan 
+          puro y tan precioso como tú.
+        </p>
+
+        <p>
+          Hoy quiero que lo sepas con el alma abierta: <strong>te amo</strong> de una forma que me supera. 
+          Te amo con una ternura que me derrite… y con una pasión que me quema por dentro. Te amo con ganas, 
+          con deseo, con necesidad… con esa intensidad que solo se siente cuando el corazón no sabe esconderse.
+        </p>
+
+        <p>
+          Porque tú no solo eres mi novia… tú eres mi debilidad favorita. Mi pensamiento más bonito. 
+          Mi tentación más dulce. Mi lugar seguro.
+        </p>
+
+        <p>
+          Y esta noche, aunque no estés aquí, yo te siento cerca… como si tu esencia se quedara en mi pecho, 
+          como si tus besos vivieran en mi memoria, como si tu cuerpo y tu alma hubieran marcado mi vida para siempre.
+        </p>
+
+        <p>
+          Quiero abrazarte fuerte. Quiero mirarte a los ojos y que sientas lo que yo siento. Quiero que entiendas 
+          que contigo no juego… contigo yo sueño, yo me entrego, yo me pierdo.
+        </p>
+
+        <p>
+          Y si el universo me diera un deseo infinito, no pediría riquezas, ni suerte, ni poder… pediría tenerte a ti 
+          cada noche, cada mañana, cada instante. Porque tú eres lo único que realmente se siente como destino.
+        </p>
+
+        <p>
+          Mi amor… si supieras cuánto te extraño cuando no estás, cuánto te deseo cuando cierro los ojos, cuánto me 
+          haces arder cuando te imagino cerca… entenderías que lo mío contigo no es solo amor.
+        </p>
+
+        <p>
+          <strong>Es fuego. Es cielo. Es eternidad.</strong>
+        </p>
+
+        <p>
+          Y esta noche solo quiero que te duermas sabiendo esto:<br>
+          que hay un hombre que te piensa con locura…<br>
+          que te ama con el alma…<br>
+          y que te desea con un corazón completamente rendido a ti.
+        </p>
+
+        <p>
+          Buenas noches, mi vida…<br>
+          que el cielo te cuide,<br>
+          y que mis pensamientos te abracen donde estés.
+        </p>
+
+        <p>
+          <strong>Te amo más de lo que las palabras pueden soportar.</strong> 💜
+        </p>
+      </div>
+
+      <div class="signature">
+        Con todo mi amor,
+        <span>JUAN KALETH MENDOZA PRIMERA 💜</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="final-neon">
+        Y si alguna vez el universo se apaga, si el tiempo se rompe y el destino intenta separarnos, 
+        yo volvería a encontrarte en cada vida, en cada cielo, en cada estrella… porque mi alma ya tiene 
+        tu nombre grabado como un juramento eterno, y mi corazón solo sabe latir con una verdad divina: 
+        tú eres mi milagro más hermoso, mi eternidad favorita, mi cielo hecho mujer… <strong>VALERIA PETRO VILLAZÓN</strong>.
+      </div>
+
+    </div>
+  </div>
+</body>
+  </html>
